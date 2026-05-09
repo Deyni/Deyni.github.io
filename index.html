@@ -3,128 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Descarbonização | Inteligência Preditiva</title>
+    <title>PID | Nexus Descarbonização</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #000000; color: #ffffff; font-family: 'Inter', sans-serif; }
-        .accent-orange { color: #FF6B00; }
-        .bg-orange { background-color: #FF6B00; }
-        .card { background-color: #111111; border: 1px solid #333; border-radius: 8px; }
+        :root { --pid-navy: #001f3f; --pid-orange: #FF4500; }
+        body { background-color: #050505; color: #e5e7eb; overflow: hidden; height: 100vh; }
+        .sidebar { background-color: rgba(10, 10, 15, 0.95); border-right: 1px solid #222; }
+        .map-bg { background: radial-gradient(circle, #1a202c 0%, #000 100%); position: relative; }
+        .pid-header { background-color: var(--pid-navy); border-bottom: 2px solid var(--pid-orange); }
+        .tool-panel { background: rgba(20, 20, 25, 0.8); backdrop-filter: blur(10px); border: 1px solid #333; }
     </style>
 </head>
-<body class="p-4 md:p-10">
+<body class="flex flex-col">
 
-    <header class="mb-12 text-center md:text-left">
-        <h1 class="text-4xl font-bold tracking-tighter italic">NEXUS <span class="accent-orange">DESCARBONIZAÇÃO</span></h1>
-        <p class="text-gray-400 mt-2">Inteligência Preditiva para o Futuro Sustentável [cite: 59]</p>
+    <header class="pid-header h-16 flex items-center justify-between px-6 z-50">
+        <div class="flex items-center gap-4">
+            <img src="https://raw.githubusercontent.com/sua-logo-url-aqui.png" alt="Logo PID" class="h-10 object-contain">
+            <div class="h-8 w-px bg-white/20"></div>
+            <h1 class="font-bold text-lg tracking-tight uppercase">Plataforma Interativa de <span class="text-orange-500">Descarbonização</span></h1>
+        </div>
+        <div class="flex gap-4 text-xs font-mono">
+            <span class="bg-black/30 px-3 py-1 rounded border border-white/10 uppercase">Usuário: Gestor Público</span>
+            <span class="bg-orange-600 px-3 py-1 rounded font-bold uppercase">Módulo Nexus v1.0</span>
+        </div>
     </header>
 
-    <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="flex flex-1 overflow-hidden">
         
-        <section class="card p-6 flex flex-col gap-6">
-            <h2 class="text-xl font-bold border-l-4 border-orange-600 pl-3">SIMULAÇÃO EM SEGUNDOS </h2>
+        <aside class="sidebar w-72 p-4 flex flex-col gap-6 overflow-y-auto">
+            <div>
+                <h3 class="text-xs font-bold text-gray-500 uppercase mb-3 tracking-widest">Camadas de Dados (PID)</h3>
+                <div class="flex flex-col gap-2">
+                    <label class="flex items-center gap-3 p-2 hover:bg-white/5 rounded cursor-pointer text-sm">
+                        <input type="checkbox" checked class="accent-orange-600"> BDiA - Ambiental (IBGE) [cite: 2]
+                    </label>
+                    <label class="flex items-center gap-3 p-2 hover:bg-white/5 rounded cursor-pointer text-sm">
+                        <input type="checkbox" checked class="accent-orange-600"> Uso da Terra (MapBiomas) [cite: 5]
+                    </label>
+                    <label class="flex items-center gap-3 p-2 hover:bg-white/5 rounded cursor-pointer text-sm">
+                        <input type="checkbox" class="accent-orange-600"> Matriz Energética (BEN/EPE) [cite: 28]
+                    </label>
+                    <label class="flex items-center gap-3 p-2 hover:bg-white/5 rounded cursor-pointer text-sm">
+                        <input type="checkbox" class="accent-orange-600"> Geração (SIGA/ANEEL) [cite: 40]
+                    </label>
+                </div>
+            </div>
+
+            <div class="mt-auto pt-4 border-t border-white/10">
+                <p class="text-[10px] text-gray-500 leading-tight">
+                    Dados processados por inteligência preditiva para suporte à decisão estratégica[cite: 59, 115].
+                </p>
+            </div>
+        </aside>
+
+        <main class="flex-1 map-bg flex items-center justify-center relative">
             
-            <div>
-                <label class="block text-sm mb-2 text-gray-300">Reflorestamento (Hectares) [cite: 82]</label>
-                <input type="range" id="reforest" min="0" max="5000" value="1000" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-orange">
-                <span id="reforestVal" class="text-xs accent-orange font-mono">1000 ha</span>
-            </div>
-
-            <div>
-                <label class="block text-sm mb-2 text-gray-300">Eletrificação de Frota (%) [cite: 92]</label>
-                <input type="range" id="ev" min="0" max="100" value="20" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-orange">
-                <span id="evVal" class="text-xs accent-orange font-mono">20%</span>
-            </div>
-
-            <div class="mt-4 p-4 bg-orange-900/20 border border-orange-500/50 rounded">
-                <p class="text-xs text-gray-300 italic">"Dados processados a partir das séries históricas da PID e bases do IBGE/EPE"[cite: 115, 130].</p>
-            </div>
-        </section>
-
-        <section class="lg:col-span-2 card p-6">
-            <h2 class="text-xl font-bold mb-6">MÉTRICAS DE IMPACTO [cite: 83]</h2>
-            <div class="grid grid-cols-2 gap-4 mb-6">
-                <div class="p-4 bg-black/50 rounded">
-                    <p class="text-xs text-gray-400 uppercase">Toneladas de CO₂ Evitadas [cite: 84]</p>
-                    <p id="co2Display" class="text-2xl font-bold accent-orange">0 t</p>
+            <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 50px 50px;"></div>
+            
+            <div class="absolute right-6 top-6 w-96 tool-panel p-6 rounded-xl shadow-2xl flex flex-col gap-6">
+                <div>
+                    <h2 class="text-lg font-bold border-l-4 border-orange-500 pl-3">SIMULAÇÃO PREDITIVA [cite: 78]</h2>
+                    <p class="text-xs text-gray-400 mt-1">Ajuste as variáveis para prever o impacto [cite: 81]</p>
                 </div>
-                <div class="p-4 bg-black/50 rounded">
-                    <p class="text-xs text-gray-400 uppercase">ROI Estimado [cite: 84]</p>
-                    <p id="roiDisplay" class="text-2xl font-bold text-green-500">0%</p>
+
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-xs mb-2 uppercase tracking-tighter text-gray-300">
+                            <span>Reflorestamento [cite: 82]</span>
+                            <span id="reforestVal" class="text-orange-500 font-bold">1000 ha</span>
+                        </div>
+                        <input type="range" id="reforest" min="0" max="10000" value="1000" class="w-full accent-orange-600 bg-gray-800 h-1 rounded-lg cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs mb-2 uppercase tracking-tighter text-gray-300">
+                            <span>Frota Elétrica [cite: 92]</span>
+                            <span id="evVal" class="text-orange-500 font-bold">20%</span>
+                        </div>
+                        <input type="range" id="ev" min="0" max="100" value="20" class="w-full accent-orange-600 bg-gray-800 h-1 rounded-lg cursor-pointer">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="p-3 bg-black/40 rounded border border-white/5">
+                        <p class="text-[10px] text-gray-500 uppercase">CO₂ Evitado [cite: 84]</p>
+                        <p id="co2Display" class="text-xl font-bold text-orange-500">0 t</p>
+                    </div>
+                    <div class="p-3 bg-black/40 rounded border border-white/5">
+                        <p class="text-[10px] text-gray-500 uppercase">ROI Estimado [cite: 84]</p>
+                        <p id="roiDisplay" class="text-xl font-bold text-green-500">0%</p>
+                    </div>
+                </div>
+
+                <div class="h-40">
+                    <canvas id="impactChart"></canvas>
                 </div>
             </div>
-            <div class="h-64">
-                <canvas id="impactChart"></canvas>
+
+            <div class="absolute bottom-6 left-6 p-3 bg-black/60 backdrop-blur rounded border border-white/10 flex gap-6 text-[10px] uppercase font-bold tracking-widest">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-circle text-orange-500"></i> Projeção Nexus</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-square text-blue-500"></i> Base Histórica PID</span>
             </div>
-        </section>
-
-    </main>
-
-    <footer class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="card p-4">
-            <h3 class="text-sm font-bold mb-2">FONTES ATIVAS (PID) [cite: 1]</h3>
-            <ul class="text-[10px] text-gray-500 grid grid-cols-2 gap-1">
-                <li>• BDiA - IBGE </li>
-                <li>• MapBiomas </li>
-                <li>• SIGA - ANEEL [cite: 40]</li>
-                <li>• BEN - EPE [cite: 28]</li>
-            </ul>
-        </div>
-        <div class="flex items-center justify-end">
-            <p class="text-xs text-gray-600 italic">Nexus Descarbonização © 2026 | Inovação em Gestão de Carbono [cite: 57]</p>
-        </div>
-    </footer>
+        </main>
+    </div>
 
     <script>
         const ctx = document.getElementById('impactChart').getContext('2d');
         let impactChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['2026', '2027', '2028', '2029', '2030'],
+                labels: ['2026', '2028', '2030', '2032', '2034'],
                 datasets: [{
-                    label: 'Projeção de Emissões (tCO2e)',
-                    data: [100, 90, 85, 70, 60],
-                    borderColor: '#FF6B00',
-                    backgroundColor: 'rgba(255, 107, 0, 0.1)',
+                    data: [100, 95, 80, 60, 45],
+                    borderColor: '#FF4500',
+                    borderWidth: 2,
+                    pointRadius: 0,
                     fill: true,
+                    backgroundColor: 'rgba(255, 69, 0, 0.05)',
                     tension: 0.4
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                scales: {
-                    y: { grid: { color: '#222' }, ticks: { color: '#666' } },
-                    x: { grid: { color: '#222' }, ticks: { color: '#666' } }
-                },
-                plugins: { legend: { display: false } }
+                plugins: { legend: { display: false } },
+                scales: { 
+                    x: { display: true, grid: { display: false }, ticks: { color: '#444' } },
+                    y: { display: false }
+                }
             }
         });
 
-        function updateSimulation() {
-            const reforest = document.getElementById('reforest').value;
-            const ev = document.getElementById('ev').value;
+        function update() {
+            const r = document.getElementById('reforest').value;
+            const e = document.getElementById('ev').value;
+            document.getElementById('reforestVal').innerText = r + " ha";
+            document.getElementById('evVal').innerText = e + "%";
             
-            document.getElementById('reforestVal').innerText = reforest + " ha";
-            document.getElementById('evVal').innerText = ev + "%";
+            // Simulação matemática
+            const reduction = (r * 0.08) + (e * 2.5);
+            document.getElementById('co2Display').innerText = (reduction * 10).toFixed(0) + " t";
+            document.getElementById('roiDisplay').innerText = (reduction / 2).toFixed(1) + "%";
 
-            // Lógica de simulação simplificada baseada no PID
-            const reductionFactor = (reforest * 0.05) + (ev * 1.2);
-            const co2Evitadas = (reductionFactor * 12).toFixed(0);
-            const roi = (reductionFactor / 1.5).toFixed(1);
-
-            document.getElementById('co2Display').innerText = co2Evitadas + " t";
-            document.getElementById('roiDisplay').innerText = roi + "%";
-
-            // Atualiza Gráfico
-            impactChart.data.datasets[0].data = [100, 100 - (reductionFactor * 0.2), 100 - (reductionFactor * 0.5), 100 - (reductionFactor * 0.8), 100 - reductionFactor];
+            impactChart.data.datasets[0].data = [100, 100 - (reduction * 0.1), 100 - (reduction * 0.3), 100 - (reduction * 0.6), 100 - reduction];
             impactChart.update();
         }
 
-        document.getElementById('reforest').addEventListener('input', updateSimulation);
-        document.getElementById('ev').addEventListener('input', updateSimulation);
-        updateSimulation();
+        document.getElementById('reforest').addEventListener('input', update);
+        document.getElementById('ev').addEventListener('input', update);
+        update();
     </script>
 </body>
 </html>
