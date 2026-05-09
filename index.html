@@ -155,18 +155,24 @@
             const f = document.getElementById('frota').value;
             const r = document.getElementById('refloresta').value;
             
-            // Agora o impacto soma a partir do zero
-            const impacto = (f * 15) + (r * 0.9);
+            document.getElementById('frotaVal').innerText = f + '%';
+            document.getElementById('reflorestaVal').innerText = r + ' ha';
             
-            // Atualiza os pontos do gráfico para crescerem conforme a simulação
+            const impactoFrota = f * 18.5; 
+            const impactoVerde = r * 1.2;
+            const impactoTotal = impactoFrota + impactoVerde;
+            const co2Evitado = Math.floor(impactoTotal * 3.1);
+            const roiEstimado = (impactoTotal / 65).toFixed(1);
+        
+            document.getElementById('co2Val').innerText = co2Evitado.toLocaleString() + ' t';
+            document.getElementById('roiVal').innerText = roiEstimado + '%';
             chart.data.datasets[1].data = [
-                0, 
-                impacto * 0.2, 
-                impacto * 0.5, 
-                impacto * 0.8, 
-                impacto
+                1300, 
+                1300 - (impactoTotal * 0.3), 
+                1200 - (impactoTotal * 0.6), 
+                1000 - (impactoTotal * 1.2), 
+                Math.max(50, 1300 - (impactoTotal * 2.5))
             ];
-            
             chart.update();
         }
         document.getElementById('frota').addEventListener('input', update);
