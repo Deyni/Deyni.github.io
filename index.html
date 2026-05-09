@@ -15,7 +15,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid #001a33;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            z-index: 100; /* Garante que a janela fique sobre o mapa */
+            z-index: 100; 
         }
         .accent-orange { accent-color: #ff4d00; }
     </style>
@@ -121,13 +121,13 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Inicializa o mapa real focado no Brasil
+        // mapa
         var map = L.map('map', {zoomControl: false}).setView([-14.235, -51.925], 4);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
 
-        // Inicializa o gráfico
+        // gráfico
         const ctx = document.getElementById('predChart').getContext('2d');
         let chart = new Chart(ctx, {
             type: 'line',
