@@ -154,17 +154,21 @@
         function update() {
             const f = document.getElementById('frota').value;
             const r = document.getElementById('refloresta').value;
-            document.getElementById('frotaVal').innerText = f + '%';
-            document.getElementById('reflorestaVal').innerText = r + ' ha';
             
+            // Agora o impacto soma a partir do zero
             const impacto = (f * 15) + (r * 0.9);
-            document.getElementById('co2Val').innerText = Math.floor(impacto * 2.8).toLocaleString() + ' t';
-            document.getElementById('roiVal').innerText = (impacto / 75).toFixed(1) + '%';
-
-            chart.data.datasets[1].data = [1300, 1300 - (impacto * 0.2), 1300 - (impacto * 0.5), 1300 - (impacto * 1.1), Math.max(100, 1300 - (impacto * 2.2))];
+            
+            // Atualiza os pontos do gráfico para crescerem conforme a simulação
+            chart.data.datasets[1].data = [
+                0, 
+                impacto * 0.2, 
+                impacto * 0.5, 
+                impacto * 0.8, 
+                impacto
+            ];
+            
             chart.update();
         }
-
         document.getElementById('frota').addEventListener('input', update);
         document.getElementById('refloresta').addEventListener('input', update);
     </script>
