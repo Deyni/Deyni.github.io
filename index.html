@@ -3,176 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Descarbonização | Inteligência Preditiva</title>
+    <title>Nexus | Simplicidade Estratégica</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --nexus-orange: #FF6B00; --nexus-dark: #0A0A0A; }
-        body { background-color: var(--nexus-dark); color: #E5E5E5; font-family: 'Inter', sans-serif; }
-        .glass-card { background: rgba(20, 20, 20, 0.8); border: 1px solid rgba(255, 107, 0, 0.2); border-radius: 1rem; backdrop-filter: blur(10px); transition: 0.3s; }
-        .glass-card:hover { border-color: var(--nexus-orange); }
-        .nexus-gradient { background: linear-gradient(135deg, #FF6B00 0%, #FF9E00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .btn-nexus { background: linear-gradient(135deg, #FF6B00 0%, #CC5500 100%); color: white; border-radius: 0.5rem; transition: 0.3s; }
-        .btn-nexus:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4); }
-        input[type="range"] { accent-color: var(--nexus-orange); }
+        body { background-color: #050505; color: #f0f0f0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .nexus-border { border: 2px solid #FF6B00; }
+        .nexus-text { color: #FF6B00; }
+        .nexus-btn { background: #FF6B00; transition: 0.3s; }
+        .nexus-btn:hover { background: #E66000; transform: scale(1.02); }
+        .card { background: #121212; border-radius: 12px; padding: 1.5rem; }
+        input[type=range] { width: 100%; accent-color: #FF6B00; }
     </style>
 </head>
-<body class="min-h-screen">
+<body class="p-4 md:p-10">
 
-    <nav class="p-6 border-b border-white/10 flex justify-between items-center bg-black/50 sticky top-0 z-50">
-        <div class="flex flex-col">
-            <span class="text-2xl font-black nexus-gradient leading-none uppercase">Nexus</span>
-            <span class="text-[10px] tracking-[0.3em] uppercase text-gray-400">Descarbonização</span>
-        </div>
-        <div class="hidden md:flex gap-6 text-xs font-bold uppercase tracking-widest text-gray-500">
-            <span class="text-white">Simulador</span>
-            <span>Métricas PID</span>
-            <span>Relatórios BNDES</span>
-        </div>
-        <button class="btn-nexus px-4 py-2 text-xs font-bold uppercase">Sair da Infoxicação</button>
-    </nav>
+    <header class="max-w-5xl mx-auto mb-10 border-b border-orange-900/30 pb-6 text-center">
+        <h1 class="text-4xl font-black nexus-text tracking-tighter uppercase">Nexus Descarbonização</h1>
+        <p class="text-gray-400 mt-2 font-light italic">"Traduzindo dados complexos da PID em decisões simples para o Brasil."</p>
+    </header>
 
-    <main class="max-w-7xl mx-auto p-4 md:p-8 space-y-8">
+    <main class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
         
-        <div class="flex items-center gap-4 text-sm text-orange-200/60 italic px-2">
-            <i class="fas fa-exclamation-triangle"></i>
-            <span>"Por que o dinheiro não chega aos projetos de alto impacto?" [cite: 8] - Resolvendo o gap de $1.3 Tri[cite: 5].</span>
+        <div class="card nexus-border">
+            <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                🌱 O que você quer fazer hoje?
+            </h2>
+            
+            <div class="space-y-8">
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <label class="font-semibold">Plantar Árvores (Hectares)</label>
+                        <span id="label-ref" class="nexus-text font-bold text-lg">50</span>
+                    </div>
+                    <input type="range" id="input-ref" min="0" max="1000" value="50">
+                    <p class="text-[10px] text-gray-500 mt-1 uppercase italic">Fonte: IBGE/PEVS - Produção da Extração Vegetal</p>
+                </div>
+
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <label class="font-semibold">Trocar Carros por Elétricos (%)</label>
+                        <span id="label-frota" class="nexus-text font-bold text-lg">10%</span>
+                    </div>
+                    <input type="range" id="input-frota" min="0" max="100" value="10">
+                    <p class="text-[10px] text-gray-500 mt-1 uppercase italic">Fonte: Balanço Energético Nacional (BEN)</p>
+                </div>
+            </div>
+
+            <div class="mt-10 p-4 bg-orange-500/10 rounded-lg text-sm leading-relaxed text-orange-200/80">
+                <strong>Dica Nexus:</strong> Reflorestar é o caminho mais rápido para acessar o <strong>Crédito Verde do BNDES</strong>.
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            
-            <aside class="lg:col-span-4 space-y-6">
-                <div class="glass-card p-6">
-                    <h3 class="text-orange-500 font-bold mb-4 flex items-center gap-2 uppercase tracking-tighter">
-                        <i class="fas fa-bolt"></i> Simulação em Segundos [cite: 25]
-                    </h3>
-                    
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between text-xs mb-2">
-                                <label class="uppercase text-gray-400">Reflorestamento Amazônia [cite: 35]</label>
-                                <span id="val-ref" class="text-orange-500 font-bold">150 ha</span>
-                            </div>
-                            <input type="range" id="input-ref" class="w-full" min="0" max="5000" value="150">
-                        </div>
-
-                        <div>
-                            <div class="flex justify-between text-xs mb-2">
-                                <label class="uppercase text-gray-400">Eletrificação de Frota Municipal [cite: 36]</label>
-                                <span id="val-frota" class="text-orange-500 font-bold">12%</span>
-                            </div>
-                            <input type="range" id="input-frota" class="w-full" min="0" max="100" value="12">
-                        </div>
-
-                        <div class="p-4 bg-white/5 rounded-lg border border-white/5">
-                            <h4 class="text-[10px] uppercase text-gray-500 mb-2">Alvo de Mercado [cite: 63]</h4>
-                            <select class="bg-transparent text-sm w-full outline-none text-orange-400">
-                                <option>Capitais e Consultorias ESG</option>
-                                <option>Cidades Médias (>100k hab)</option>
-                                <option>Agronegócio Sustentável</option>
-                            </select>
-                        </div>
-                    </div>
+        <div class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="card text-center">
+                    <p class="text-xs uppercase text-gray-400 mb-1">Impacto Ambiental</p>
+                    <p class="text-3xl font-black"><span id="res-co2">750</span> tCO₂</p>
+                    <p class="text-[10px] text-green-500 uppercase mt-1">Evitados por ano</p>
                 </div>
-
-                <div class="glass-card p-6 border-l-4 border-l-green-600">
-                    <p class="text-[10px] text-gray-500 uppercase mb-1">Diferencial Técnico [cite: 54]</p>
-                    <h4 class="font-bold text-sm">Machine Learning PID [cite: 55, 59]</h4>
-                    <p class="text-xs text-gray-400 mt-2 italic leading-relaxed">
-                        Predições baseadas em séries históricas e fatores de emissão oficiais para garantir o crédito verde[cite: 57, 60].
-                    </p>
+                <div class="card text-center">
+                    <p class="text-xs uppercase text-gray-400 mb-1">Dinheiro no Bolso (ROI)</p>
+                    <p class="text-3xl font-black text-green-500">R$ <span id="res-roi">45k</span></p>
+                    <p class="text-[10px] text-gray-500 uppercase mt-1">Estimativa de Retorno</p>
                 </div>
-            </aside>
+            </div>
 
-            <section class="lg:col-span-8 space-y-6">
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="glass-card p-4 text-center">
-                        <span class="text-[10px] text-gray-500 uppercase">CO₂ Evitado [cite: 28]</span>
-                        <div class="text-2xl font-black nexus-orange"><span id="res-co2">2.450</span> t</div>
-                    </div>
-                    <div class="glass-card p-4 text-center">
-                        <span class="text-[10px] text-gray-500 uppercase">ROI Esperado (12m) [cite: 28]</span>
-                        <div class="text-2xl font-black text-green-500">R$ <span id="res-roi">185k</span></div>
-                    </div>
-                    <div class="glass-card p-4 text-center">
-                        <span class="text-[10px] text-gray-500 uppercase">Prob. de Crédito BNDES [cite: 61]</span>
-                        <div class="text-2xl font-black text-blue-400">88%</div>
-                    </div>
-                </div>
+            <div class="card h-64">
+                <h3 class="text-sm font-bold uppercase mb-4 text-gray-400">Sua meta de descarbonização</h3>
+                <canvas id="chartMeta"></canvas>
+            </div>
 
-                <div class="glass-card p-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-orange-500 font-bold flex items-center gap-2 uppercase">
-                            <i class="fas fa-eye"></i> Visão de Futuro [cite: 29]
-                        </h3>
-                        <span class="text-[10px] bg-orange-500/20 text-orange-500 px-2 py-1 rounded">Tempo Real</span>
-                    </div>
-                    <div class="h-[300px]">
-                        <canvas id="mainChart"></canvas>
-                    </div>
-                </div>
-            </section>
+            <button class="w-full nexus-btn py-4 rounded-xl font-bold text-lg shadow-lg">
+                GERAR RELATÓRIO PARA O BNDES
+            </button>
         </div>
     </main>
 
     <script>
-        const ctx = document.getElementById('mainChart').getContext('2d');
-        
-        let impactChart = new Chart(ctx, {
-            type: 'line',
+        const ctx = document.getElementById('chartMeta').getContext('2d');
+        let chart = new Chart(ctx, {
+            type: 'bar',
             data: {
-                labels: ['Hoje', '6 Meses', '12 Meses', '18 Meses', '24 Meses', '30 Meses'],
+                labels: ['Emissão Atual', 'Sua Ação', 'Meta 2030'],
                 datasets: [{
-                    label: 'Tendência de Emissões (SaaS)',
-                    data: [100, 85, 70, 55, 40, 25],
-                    borderColor: '#FF6B00',
-                    backgroundColor: 'rgba(255, 107, 0, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4,
-                    pointRadius: 0
+                    label: 'Toneladas de CO2',
+                    data: [1000, 100, 200],
+                    backgroundColor: ['#333', '#FF6B00', '#00FF85'],
+                    borderRadius: 5
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                scales: {
-                    y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#666' } },
-                    x: { grid: { display: false }, ticks: { color: '#666' } }
-                },
-                plugins: { legend: { display: false } }
+                plugins: { legend: { display: false } },
+                scales: { y: { display: false }, x: { grid: { display: false }, ticks: { color: '#888' } } }
             }
         });
 
-        function updateValues() {
+        function update() {
             const ref = parseInt(document.getElementById('input-ref').value);
             const frota = parseInt(document.getElementById('input-frota').value);
 
-            document.getElementById('val-ref').innerText = `${ref.toLocaleString()} ha`;
-            document.getElementById('val-frota').innerText = `${frota}%`;
+            document.getElementById('label-ref').innerText = ref;
+            document.getElementById('label-frota').innerText = frota + '%';
 
-            // Lógica baseada em fatores de emissão oficiais [cite: 60]
-            const co2 = (ref * 15) + (frota * 450);
-            const roi = (ref * 250) + (frota * 12000);
+            // Cálculos reais simplificados (médias de sequestro de CO2 e economia de combustível)
+            const co2 = (ref * 12.5) + (frota * 85);
+            const roi = (ref * 300) + (frota * 2500);
 
             document.getElementById('res-co2').innerText = co2.toLocaleString('pt-BR');
             document.getElementById('res-roi').innerText = (roi/1000).toFixed(0) + 'k';
 
-            // Atualiza gráfico simulando o efeito dominó na Amazônia 
-            const baseData = [100, 95, 88, 80, 75, 70];
-            const reductionFactor = (ref / 5000) * 40 + (frota / 100) * 30;
-            
-            impactChart.data.datasets[0].data = baseData.map((val, i) => i === 0 ? val : Math.max(10, val - (reductionFactor * (i/5))));
-            impactChart.update();
+            chart.data.datasets[0].data[1] = 1000 - (co2 / 10);
+            chart.update();
         }
 
-        document.querySelectorAll('input').forEach(input => {
-            input.addEventListener('input', updateValues);
-        });
-        
-        updateValues();
+        document.querySelectorAll('input').forEach(i => i.addEventListener('input', update));
+        update();
     </script>
 </body>
 </html>
