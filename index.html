@@ -1,256 +1,130 @@
-export default function NexusNDPrototype() {
-  return (
-    <div className="min-h-screen bg-[#08110d] text-white font-sans overflow-x-hidden">
-      {/* HERO */}
-      <section className="relative border-b border-white/10 bg-gradient-to-br from-[#0b1c15] via-[#0d2319] to-[#102d21]">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top,rgba(115,240,170,0.4),transparent_40%)]" />
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Descarbonização | Inteligência Preditiva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { background-color: #000000; color: #ffffff; font-family: 'Inter', sans-serif; }
+        .accent-orange { color: #FF6B00; }
+        .bg-orange { background-color: #FF6B00; }
+        .card { background-color: #111111; border: 1px solid #333; border-radius: 8px; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
 
-        <div className="relative max-w-7xl mx-auto px-6 py-16 lg:py-24">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <header class="mb-12 text-center md:text-left">
+        <h1 class="text-4xl font-bold tracking-tighter italic">NEXUS <span class="accent-orange">DESCARBONIZAÇÃO</span></h1>
+        <p class="text-gray-400 mt-2">Inteligência Preditiva para o Futuro Sustentável [cite: 59]</p>
+    </header>
+
+    <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <section class="card p-6 flex flex-col gap-6">
+            <h2 class="text-xl font-bold border-l-4 border-orange-600 pl-3">SIMULAÇÃO EM SEGUNDOS </h2>
+            
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#73f0aa]/30 bg-[#73f0aa]/10 px-4 py-2 text-[#73f0aa] text-sm font-semibold mb-6">
-                Equipe ND • Inteligência em Gestão de Carbono
-              </div>
-
-              <h1 className="text-5xl lg:text-7xl font-black leading-tight mb-6">
-                NEXUS
-                <span className="block text-[#73f0aa]">
-                  DESCARBONIZAÇÃO
-                </span>
-              </h1>
-
-              <p className="text-lg text-[#c5d8cf] leading-relaxed max-w-2xl mb-8">
-                Inteligência preditiva para o futuro sustentável.
-                Simule ações climáticas, visualize impactos ambientais
-                e descubra o retorno financeiro de projetos verdes.
-              </p>
-
-              <div className="flex flex-wrap gap-4">
-                <button className="bg-[#73f0aa] text-black font-bold px-6 py-4 rounded-2xl hover:scale-105 transition-transform">
-                  Simular Cenário
-                </button>
-
-                <button className="border border-white/20 px-6 py-4 rounded-2xl text-white hover:bg-white/5 transition-colors">
-                  Ver Relatório ESG
-                </button>
-              </div>
+                <label class="block text-sm mb-2 text-gray-300">Reflorestamento (Hectares) [cite: 82]</label>
+                <input type="range" id="reforest" min="0" max="5000" value="1000" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-orange">
+                <span id="reforestVal" class="text-xs accent-orange font-mono">1000 ha</span>
             </div>
 
             <div>
-              <div className="bg-[#112118] border border-white/10 rounded-[32px] p-6 shadow-2xl shadow-black/40">
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <p className="text-[#73f0aa] text-sm font-bold uppercase tracking-widest">
-                      Emissões Projetadas
-                    </p>
-                    <h2 className="text-3xl font-black mt-2">
-                      Amazônia Legal
-                    </h2>
-                  </div>
-
-                  <div className="w-4 h-4 rounded-full bg-[#73f0aa] animate-pulse" />
-                </div>
-
-                <div className="h-64 rounded-3xl bg-gradient-to-br from-[#173324] to-[#0f2018] flex items-end justify-between px-6 pb-6 relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,rgba(115,240,170,0.6),transparent_60%)]" />
-
-                  {[45, 65, 90, 120, 150].map((h, i) => (
-                    <div
-                      key={i}
-                      className="w-12 rounded-t-2xl bg-[#73f0aa] transition-all duration-700"
-                      style={{ height: `${h}px` }}
-                    />
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="bg-[#162d22] rounded-2xl p-5 border border-white/5">
-                    <p className="text-[#8db49f] text-sm mb-2">CO₂ Evitado</p>
-                    <h3 className="text-3xl font-black text-[#73f0aa]">
-                      120k t
-                    </h3>
-                  </div>
-
-                  <div className="bg-[#162d22] rounded-2xl p-5 border border-white/5">
-                    <p className="text-[#8db49f] text-sm mb-2">ROI Estimado</p>
-                    <h3 className="text-3xl font-black text-[#73f0aa]">
-                      4.2 anos
-                    </h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* INFOXICAÇÃO */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <p className="text-[#73f0aa] uppercase tracking-[0.3em] text-sm font-bold mb-4">
-              O Problema
-            </p>
-
-            <h2 className="text-4xl lg:text-5xl font-black leading-tight mb-6">
-              INFOXICAÇÃO:
-              <span className="block text-[#73f0aa]">
-                excesso de dados,
-                zero clareza.
-              </span>
-            </h2>
-
-            <p className="text-[#b7c8c0] text-lg leading-relaxed">
-              Prefeitos e investidores possuem acesso a milhares de
-              planilhas ambientais, mas não conseguem identificar
-              quais ações geram maior impacto climático e financeiro.
-            </p>
-          </div>
-
-          <div className="grid gap-5">
-            {[
-              'Bibliotecas públicas sem índice estratégico',
-              'Gestores perdidos entre dados ambientais',
-              'Baixa previsibilidade financeira',
-              'Projetos verdes sem validação científica',
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="bg-[#102118] border border-white/10 rounded-3xl p-6 flex items-start gap-4"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-[#73f0aa]/10 border border-[#73f0aa]/20 flex items-center justify-center text-[#73f0aa] font-black text-xl">
-                  {index + 1}
-                </div>
-
-                <p className="text-[#d7e4dd] text-lg leading-relaxed">
-                  {item}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SIMULADOR */}
-      <section className="bg-[#0d1813] border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="text-center mb-14">
-            <p className="text-[#73f0aa] uppercase tracking-[0.3em] text-sm font-bold mb-4">
-              Simulação em Tempo Real
-            </p>
-
-            <h2 className="text-4xl lg:text-6xl font-black mb-6">
-              Inteligência
-              <span className="text-[#73f0aa]"> Preditiva</span>
-            </h2>
-
-            <p className="text-[#b7c8c0] text-lg max-w-3xl mx-auto leading-relaxed">
-              Simule ações climáticas e visualize instantaneamente
-              o impacto ambiental e econômico do município.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-10">
-            <div className="bg-[#102118] rounded-[32px] border border-white/10 p-8">
-              <h3 className="text-2xl font-black mb-8">
-                Ajuste os Cenários
-              </h3>
-
-              <div className="space-y-10">
-                {[
-                  ['Eletrificação da Frota', '32%'],
-                  ['Reflorestamento', '58%'],
-                  ['Energia Solar', '71%'],
-                ].map((item, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between mb-4 text-lg font-semibold">
-                      <span>{item[0]}</span>
-                      <span className="text-[#73f0aa]">{item[1]}</span>
-                    </div>
-
-                    <div className="h-4 rounded-full bg-[#1c3428] overflow-hidden">
-                      <div
-                        className="h-full bg-[#73f0aa] rounded-full"
-                        style={{ width: item[1] }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+                <label class="block text-sm mb-2 text-gray-300">Eletrificação de Frota (%) [cite: 92]</label>
+                <input type="range" id="ev" min="0" max="100" value="20" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-orange">
+                <span id="evVal" class="text-xs accent-orange font-mono">20%</span>
             </div>
 
-            <div className="grid gap-5">
-              {[
-                ['Toneladas de CO₂ evitadas', '120.000 t'],
-                ['Economia anual prevista', 'R$ 12 milhões'],
-                ['Elegibilidade Crédito Verde', 'Aprovado'],
-                ['Payback estimado', '4,2 anos'],
-              ].map((metric, index) => (
-                <div
-                  key={index}
-                  className="bg-gradient-to-br from-[#13251c] to-[#0f1d16] border border-white/10 rounded-3xl p-7"
-                >
-                  <p className="text-[#93b6a2] mb-3 text-sm uppercase tracking-widest font-bold">
-                    {metric[0]}
-                  </p>
+            <div class="mt-4 p-4 bg-orange-900/20 border border-orange-500/50 rounded">
+                <p class="text-xs text-gray-300 italic">"Dados processados a partir das séries históricas da PID e bases do IBGE/EPE"[cite: 115, 130].</p>
+            </div>
+        </section>
 
-                  <h3 className="text-4xl font-black text-[#73f0aa]">
-                    {metric[1]}
-                  </h3>
+        <section class="lg:col-span-2 card p-6">
+            <h2 class="text-xl font-bold mb-6">MÉTRICAS DE IMPACTO [cite: 83]</h2>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="p-4 bg-black/50 rounded">
+                    <p class="text-xs text-gray-400 uppercase">Toneladas de CO₂ Evitadas [cite: 84]</p>
+                    <p id="co2Display" class="text-2xl font-bold accent-orange">0 t</p>
                 </div>
-              ))}
+                <div class="p-4 bg-black/50 rounded">
+                    <p class="text-xs text-gray-400 uppercase">ROI Estimado [cite: 84]</p>
+                    <p id="roiDisplay" class="text-2xl font-bold text-green-500">0%</p>
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* DIFERENCIAL */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid lg:grid-cols-3 gap-6">
-          {[
-            ['Machine Learning', 'Processamento avançado de séries históricas da PID para prever cenários futuros.'],
-            ['Validade Científica', 'Relatórios alinhados a fatores oficiais de emissão e critérios ESG.'],
-            ['Crédito Verde', 'Estrutura preparada para exigências de bancos como BNDES e fundos climáticos.'],
-          ].map((card, index) => (
-            <div
-              key={index}
-              className="bg-[#102118] rounded-[32px] border border-white/10 p-8 hover:border-[#73f0aa]/30 transition-all"
-            >
-              <div className="w-16 h-16 rounded-3xl bg-[#73f0aa]/10 border border-[#73f0aa]/20 flex items-center justify-center mb-6">
-                <div className="w-7 h-7 rounded-full bg-[#73f0aa]" />
-              </div>
-
-              <h3 className="text-3xl font-black mb-5 text-[#73f0aa]">
-                {card[0]}
-              </h3>
-
-              <p className="text-[#c0d0c8] text-lg leading-relaxed">
-                {card[1]}
-              </p>
+            <div class="h-64">
+                <canvas id="impactChart"></canvas>
             </div>
-          ))}
+        </section>
+
+    </main>
+
+    <footer class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="card p-4">
+            <h3 class="text-sm font-bold mb-2">FONTES ATIVAS (PID) [cite: 1]</h3>
+            <ul class="text-[10px] text-gray-500 grid grid-cols-2 gap-1">
+                <li>• BDiA - IBGE </li>
+                <li>• MapBiomas </li>
+                <li>• SIGA - ANEEL [cite: 40]</li>
+                <li>• BEN - EPE [cite: 28]</li>
+            </ul>
         </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="border-t border-white/10 bg-[#07110d]">
-        <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row justify-between gap-6 items-center">
-          <div>
-            <h2 className="text-3xl font-black">
-              Nexus <span className="text-[#73f0aa]">ND</span>
-            </h2>
-
-            <p className="text-[#9db3a7] mt-3 max-w-xl">
-              Transformando dados ambientais em decisões estratégicas
-              para acelerar a descarbonização do Brasil.
-            </p>
-          </div>
-
-          <button className="bg-[#73f0aa] text-black font-black px-8 py-5 rounded-2xl hover:scale-105 transition-transform">
-            Fazer Parte da Jornada
-          </button>
+        <div class="flex items-center justify-end">
+            <p class="text-xs text-gray-600 italic">Nexus Descarbonização © 2026 | Inovação em Gestão de Carbono [cite: 57]</p>
         </div>
-      </footer>
-    </div>
-  )
-}
+    </footer>
+
+    <script>
+        const ctx = document.getElementById('impactChart').getContext('2d');
+        let impactChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2026', '2027', '2028', '2029', '2030'],
+                datasets: [{
+                    label: 'Projeção de Emissões (tCO2e)',
+                    data: [100, 90, 85, 70, 60],
+                    borderColor: '#FF6B00',
+                    backgroundColor: 'rgba(255, 107, 0, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { grid: { color: '#222' }, ticks: { color: '#666' } },
+                    x: { grid: { color: '#222' }, ticks: { color: '#666' } }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        function updateSimulation() {
+            const reforest = document.getElementById('reforest').value;
+            const ev = document.getElementById('ev').value;
+            
+            document.getElementById('reforestVal').innerText = reforest + " ha";
+            document.getElementById('evVal').innerText = ev + "%";
+
+            // Lógica de simulação simplificada baseada no PID
+            const reductionFactor = (reforest * 0.05) + (ev * 1.2);
+            const co2Evitadas = (reductionFactor * 12).toFixed(0);
+            const roi = (reductionFactor / 1.5).toFixed(1);
+
+            document.getElementById('co2Display').innerText = co2Evitadas + " t";
+            document.getElementById('roiDisplay').innerText = roi + "%";
+
+            // Atualiza Gráfico
+            impactChart.data.datasets[0].data = [100, 100 - (reductionFactor * 0.2), 100 - (reductionFactor * 0.5), 100 - (reductionFactor * 0.8), 100 - reductionFactor];
+            impactChart.update();
+        }
+
+        document.getElementById('reforest').addEventListener('input', updateSimulation);
+        document.getElementById('ev').addEventListener('input', updateSimulation);
+        updateSimulation();
+    </script>
+</body>
+</html>
