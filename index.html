@@ -1,12 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dayane ᓚᘏᗢ</title>
+    <title>Nexus Descarbonização | Protótipo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { background-color: #000; color: #fff; font-family: sans-serif; }
+        .nexus-orange { color: #FF6B00; }
+        .nexus-bg-orange { background-color: #FF6B00; }
+        .card { border: 1px solid #FF6B00; border-radius: 15px; padding: 20px; background: rgba(255, 107, 0, 0.05); }
+    </style>
 </head>
-<body>
-    
+<body class="p-4 md:p-8">
+
+    <!-- Header -->
+    <header class="mb-12 text-center">
+        <h1 class="text-5xl font-black nexus-orange uppercase">Nexus</h1>
+        <h2 class="text-3xl font-bold tracking-widest uppercase">Descarbonização</h2>
+    </header>
+
+    <main class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Coluna de Controles (Simulação em Segundos) -->
+        <section class="card space-y-6">
+            <h3 class="text-xl font-bold nexus-orange flex items-center">
+                ⚡ SIMULAÇÃO EM TEMPO REAL
+            </h3>
+            <p class="text-sm text-gray-400">Ajuste as variáveis para ver o impacto na Amazônia.</p>
+            
+            <div>
+                <label class="block mb-2">Reflorestamento (Hectares)</label>
+                <input type="range" id="reflorestamento" min="0" max="1000" value="100" class="w-full accent-orange-600">
+                <span id="val-ref" class="text-orange-400 font-bold">100 ha</span>
+            </div>
+
+            <div>
+                <label class="block mb-2">Eletrificação de Frota (%)</label>
+                <input type="range" id="frota" min="0" max="100" value="10" class="w-full accent-orange-600">
+                <span id="val-frota" class="text-orange-400 font-bold">10%</span>
+            </div>
+        </section>
+
+        <!-- Coluna de Gráfico (Visão de Futuro) -->
+        <section class="card md:col-span-2">
+            <h3 class="text-xl font-bold nexus-orange flex items-center mb-4">
+                👁️ VISÃO DE FUTURO
+            </h3>
+            <canvas id="impactChart" height="150"></canvas>
+        </section>
+
+        <!-- Métricas de Impacto -->
+        <section class="card md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="text-center p-4 border-r border-orange-900">
+                <h4 class="text-gray-400 uppercase text-xs tracking-widest">CO₂ Evitado (Toneladas)</h4>
+                <p id="co2-result" class="text-4xl font-black nexus-orange">1.250</p>
+            </div>
+            <div class="text-center p-4">
+                <h4 class="text-gray-400 uppercase text-xs tracking-widest">ROI Esperado</h4>
+                <p id="roi-result" class="text-4xl font-black text-green-500">R$ 45.000</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const ctx = document.getElementById('impactChart').getContext('2d');
+        let chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+                datasets: [{
+                    label: 'Emissões Projetadas',
+                    data: [100, 90, 85, 70, 60, 45],
+                    borderColor: '#FF6B00',
+                    backgroundColor: 'rgba(255, 107, 0, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true, grid: { color: '#222' } },
+                    x: { grid: { color: '#222' } }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        function updateSim() {
+            const ref = document.getElementById('reflorestamento').value;
+            const frota = document.getElementById('frota').value;
+            
+            document.getElementById('val-ref').innerText = `${ref} ha`;
+            document.getElementById('val-frota').innerText = `${frota}%`;
+
+            // Lógica fictícia de cálculo
+            const co2 = (ref * 12) + (frota * 50);
+            const roi = (ref * 200) + (frota * 1500);
+
+            document.getElementById('co2-result').innerText = co2.toLocaleString('pt-BR');
+            document.getElementById('roi-result').innerText = `R$ ${roi.toLocaleString('pt-BR')}`;
+
+            // Atualiza gráfico dinamicamente
+            chart.data.datasets[0].data = [100, 95 - (ref/20), 80 - (frota/5), 60 - (ref/15), 40 - (frota/3), 20];
+            chart.update();
+        }
+
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', updateSim);
+        });
+    </script>
 </body>
 </html>
